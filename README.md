@@ -1,3 +1,3 @@
 # ios-swift-simple-browser
 
-XCode + Swiftで開発したシンプルなブラウザです。
+XCode + Objective-Cで開発したシンプルなブラウザです。
