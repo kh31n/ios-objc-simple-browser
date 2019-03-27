@@ -16,12 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    _searchBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    NSString *searchEngineUrl = @"https://www.google.co.jp/search?q=";
+    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", searchEngineUrl, searchText];
+    NSURL *Url = [NSURL URLWithString:searchUrl.encodedURLString];
+    NSURLRequest *req = [NSURLRequest requestWithURL:Url];
+    [_webView loadRequest:req];
+}
 @end
